@@ -48,7 +48,8 @@ module.exports = {
     }
   },
   test: {
-    db: 'mongodb://localhost/noobjs_test',
+    db: 'mongodb://heroku_app30863453:654h6i1jniaftg2hb00aaaicet@ds047030.mongolab.com:47030/heroku_app30863453',
+    //db: 'mongodb://localhost/noobjs_test',
     root: rootPath,
     notifier: notifier,
     app: {
