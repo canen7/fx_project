@@ -1,4 +1,5 @@
 myApp.factory('UsersFactory', function($http){
+
 	var users;
 
 	var factory = {};
@@ -36,17 +37,27 @@ myApp.factory('UsersFactory', function($http){
 	 }
 
 	factory.getQuandlCurrencyData = function (currency){
+
 		var symbol = currency;
+		console.log(symbol);
 		var auth_token = 'auth_token=hp7KBR5vrnKzh5zw9qG1';
-		var quandl_url = 'http://www.quandl.com/api/v1/datasets/QUANDL/' + symbol +'.json?trim_start=1994-05-27&trim_end=2014-10-13' + auth_token
+		var quandl_url = 'http://www.quandl.com/api/v1/datasets/QUANDL/' + symbol +'.json?trim_start=1994-05-27&trim_end=2014-10-13&' + auth_token;
+
+		console.log(quandl_url);
 
 		$.getJSON(quandl_url, function (data) {
+			console.log(data)
 
+			console.log("In the factory and this is my data [5]: " + data.data[5] + " and data [6]" + data.data[6])
+
+		var formatted_data = [];
 
 		for ( var i=0; i<data.data.length; i++){
 			var d = Date.parse(data.data[i][0])
 			formatted_data.push([d, data.data[i][1]])
 			};
+
+		console.log(formatted_data.length);
 
 		formatted_data = formatted_data.reverse();
 
@@ -68,12 +79,13 @@ myApp.factory('UsersFactory', function($http){
 						}
 					}]
 
-					});
+				});
 
 		});
 
 
 	 }
+
 
 	return factory;
 })

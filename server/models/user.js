@@ -11,3 +11,5 @@ UserSchema.path('name').required(true, 'User name cannot be blank');
 UserSchema.path('email').required(true, 'User email cannot be blank');
 
 mongoose.model('User', UserSchema);
+
+

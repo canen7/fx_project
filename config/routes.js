@@ -8,7 +8,10 @@ module.exports = function Routes(app){
 	app.post('/users/create', function(req,res) { users.create(req,res) });
 	app.get('/users/:id', function(req,res) { users.show(req,res) });
 	app.get('/users/:id/edit', function(req,res) { users.edit(req,res) });
-
 	app.post('/users/newUser_json', function(req,res) { users.newUser_json(req,res) });
+	app.get('/test', function(req,res){ users.calculate_mean(req,res) });
+
+
+	app
 	
 };
