@@ -33,6 +33,7 @@ myApp.factory('UsersFactory', function($http){
 	    success(function(data, status, headers, config) {
 	      callback(data);
 	      users = data;
+	      console.log(data);
 	    });
 	 }
 
@@ -68,7 +69,7 @@ myApp.factory('UsersFactory', function($http){
 					},
 
 					title : {
-						text : 'Nice chart'
+						text : currency
 					},
 
 					series : [{
@@ -85,6 +86,23 @@ myApp.factory('UsersFactory', function($http){
 
 
 	 }
+
+	 factory.calculateStats = function (callback){
+		$http.get('/stats').success(function(data, status, headers, config) {
+	      callback(data);
+	      exposure = 100;
+	      formatted_stats = data;
+	      console.log(data);
+	    });
+	 }
+	 		//$('#stats').append('this is a jquery append test')
+	 	
+	 	//with the data calculated from diff Quandl data we can get the proportional expected losses
+	 	
+	 		//$('#stats').append("<h3>Once in 5 years you will loose {{json_stats.pc20 * exposure}}</h3>")
+
+
+	 
 
 
 	return factory;
