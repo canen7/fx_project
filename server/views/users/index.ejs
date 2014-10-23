@@ -99,15 +99,15 @@
 		<div class='col-md-9' id='stats' style="min-width: 310px; height: 400px; margin: 0 auto">
 			<h3>Statistics (1 year horizon) regarding potential gains/losses:</h3>
 			</br>
-			<h4>Period Start: <em>{{formatted_stats.begin_data}}</em></h4>
-			<h4>End: <em>{{formatted_stats.end_data}}</em></h4>
-			<h4>Min: <em>{{formatted_stats.min.toFixed(2)}}</em></h4>
-			<h4>Max: <em>{{formatted_stats.max.toFixed(2)}}</em></h4>
-			<h4>Mean: <em>{{formatted_stats.mean.toFixed(2)}}</em></h4>
-			<h4>Min: <em>{{formatted_stats.min.toFixed(2)}}</em></h4>
-			<h4>Pc 20: <em>{{formatted_stats.pc20.toFixed(2)}}</em></h4>
-			<h4>Pc 80: <em>{{formatted_stats.pc80.toFixed(2)}}</em></h4>
-			
+			<h4>Period start: <em>{{formatted_stats.begin_data}}</em></h4>
+			<h4>Period end: <em>{{formatted_stats.end_data}}</em></h4>
+			<h4>Max loss: <em>$ {{formatted_stats.min.toFixed(1)}}</em></h4>
+			<h4>Max gain: <em>$ {{formatted_stats.max.toFixed(1)}}</em></h4>
+			<h4>Average gain/loss: <em>$ {{formatted_stats.mean.toFixed(1)}}</em></h4>
+			<h4>Pc 20: <em>$ {{formatted_stats.pc20.toFixed(1)}}</em></h4>			
+			<h4>Pc 40: <em>$ {{formatted_stats.pc40.toFixed(1)}}</em></h4>			
+			<h4>Pc 60: <em>$ {{formatted_stats.pc60.toFixed(1)}}</em></h4>			
+			<h4>Pc 80: <em>$ {{formatted_stats.pc80.toFixed(1)}}</em></h4>			
 		</div>
 	</div> <!-- end of second row -->	
 

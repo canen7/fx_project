@@ -45,9 +45,11 @@ myApp.controller('UsersController', function($scope, UsersFactory){
                 		type: 'bar'
             		}
         		},
+        		xAxis:{ categories: ['percentile 10','percentile 20','percentile 30','percentile 40','percentile 50','percentile 60','percentile 70','percentile 80','percentile 90']
+        		},
         		series: [{
-        			yAxis: 0, 
-            		data: [$scope.formatted_stats.pc20, $scope.formatted_stats.pc30, $scope.formatted_stats.pc40, $scope.formatted_stats.pc50, $scope.formatted_stats.pc60] //UsersFactory.calculateStats(function(data){ })
+        			name: 'dollar gain/loss',
+            		data: [$scope.formatted_stats.pc10,$scope.formatted_stats.pc20, $scope.formatted_stats.pc30, $scope.formatted_stats.pc40, $scope.formatted_stats.pc50, $scope.formatted_stats.pc60,$scope.formatted_stats.pc70,$scope.formatted_stats.pc80,$scope.formatted_stats.pc90] //UsersFactory.calculateStats(function(data){ })
         			}],
         		title: {
             		text: 'Gains/losses due to currency fluctuations'

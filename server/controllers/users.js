@@ -56,7 +56,7 @@ module.exports = {
 	get_stats: function (request, response){
 
 		var auth_token = 'auth_token=hp7KBR5vrnKzh5zw9qG1';
-		var quandl_url = '/api/v1/datasets/QUANDL/EURUSD.json?trim_start=1994-05-27&trim_end=2014-10-13&transformation=rdiff&' + auth_token;
+		var quandl_url = '/api/v1/datasets/QUANDL/EURUSD.json?trim_start=1994-05-27&trim_end=2014-10-13&' + auth_token;
 
 		var amount = request.body;
 
@@ -89,31 +89,36 @@ module.exports = {
 					close_prices[i]=parsed_json.data[i][1];
 				}  
 
+				var rolling_returns_1y = [];
+				for (var i = 0; i<close_prices.length-260; i++) {
+					rolling_returns_1y[i] =  ( close_prices[i] / close_prices[i+250] ) - 1;
+				}
+
 				json_stats = {};
 
 				json_stats.begin_data = parsed_json.data[parsed_json.data.length -1][0];
 				json_stats.end_data = parsed_json.data[0][0];
-				json_stats.min = ss.min(close_prices)*amount;
-				json_stats.max = ss.max(close_prices)*amount;
-				json_stats.mean = ss.mean(close_prices)*amount;
-				json_stats.pc10 = ss.quantile(close_prices,0.1)*amount;
-				json_stats.pc15 = ss.quantile(close_prices,0.15)*amount;
-				json_stats.pc20 = ss.quantile(close_prices,0.2)*amount;
-				json_stats.pc25 = ss.quantile(close_prices,0.25)*amount;
-				json_stats.pc30 = ss.quantile(close_prices,0.3)*amount;
-				json_stats.pc35 = ss.quantile(close_prices,0.35)*amount;
-				json_stats.pc40 = ss.quantile(close_prices,0.4)*amount;
-				json_stats.pc45 = ss.quantile(close_prices,0.45)*amount;
-				json_stats.pc50 = ss.quantile(close_prices,0.5)*amount;
-				json_stats.pc55 = ss.quantile(close_prices,0.55)*amount;
-				json_stats.pc60 = ss.quantile(close_prices,0.6)*amount;
-				json_stats.pc65 = ss.quantile(close_prices,0.65)*amount;
-				json_stats.pc70 = ss.quantile(close_prices,0.7)*amount;
-				json_stats.pc75 = ss.quantile(close_prices,0.75)*amount;
-				json_stats.pc80 = ss.quantile(close_prices,0.8)*amount;
-				json_stats.pc85 = ss.quantile(close_prices,0.85)*amount;
-				json_stats.pc90 = ss.quantile(close_prices,0.9)*amount;
-				json_stats.pc95 = ss.quantile(close_prices,0.95)*amount;
+				json_stats.min = ss.min(rolling_returns_1y)*amount;
+				json_stats.max = ss.max(rolling_returns_1y)*amount;
+				json_stats.mean = ss.mean(rolling_returns_1y)*amount;
+				json_stats.pc10 = ss.quantile(rolling_returns_1y,0.1)*amount;
+				json_stats.pc15 = ss.quantile(rolling_returns_1y,0.15)*amount;
+				json_stats.pc20 = ss.quantile(rolling_returns_1y,0.2)*amount;
+				json_stats.pc25 = ss.quantile(rolling_returns_1y,0.25)*amount;
+				json_stats.pc30 = ss.quantile(rolling_returns_1y,0.3)*amount;
+				json_stats.pc35 = ss.quantile(rolling_returns_1y,0.35)*amount;
+				json_stats.pc40 = ss.quantile(rolling_returns_1y,0.4)*amount;
+				json_stats.pc45 = ss.quantile(rolling_returns_1y,0.45)*amount;
+				json_stats.pc50 = ss.quantile(rolling_returns_1y,0.5)*amount;
+				json_stats.pc55 = ss.quantile(rolling_returns_1y,0.55)*amount;
+				json_stats.pc60 = ss.quantile(rolling_returns_1y,0.6)*amount;
+				json_stats.pc65 = ss.quantile(rolling_returns_1y,0.65)*amount;
+				json_stats.pc70 = ss.quantile(rolling_returns_1y,0.7)*amount;
+				json_stats.pc75 = ss.quantile(rolling_returns_1y,0.75)*amount;
+				json_stats.pc80 = ss.quantile(rolling_returns_1y,0.8)*amount;
+				json_stats.pc85 = ss.quantile(rolling_returns_1y,0.85)*amount;
+				json_stats.pc90 = ss.quantile(rolling_returns_1y,0.9)*amount;
+				json_stats.pc95 = ss.quantile(rolling_returns_1y,0.95)*amount;
 
 				response.send(json_stats);
 				//response.send(JSON.stringify(json_stats);

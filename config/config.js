@@ -14,8 +14,8 @@ var path = require('path')
 
 module.exports = {
   development: {
-    db: 'mongodb://localhost/fx_project_dev',
-    //db: 'mongodb://heroku_app30863453:654h6i1jniaftg2hb00aaaicet@ds047030.mongolab.com:47030/heroku_app30863453',
+    //db: 'mongodb://localhost/fx_project_dev',
+    db: 'mongodb://heroku_app30863453:654h6i1jniaftg2hb00aaaicet@ds047030.mongolab.com:47030/heroku_app30863453',
     root: rootPath,
     notifier: notifier,
     app: {
