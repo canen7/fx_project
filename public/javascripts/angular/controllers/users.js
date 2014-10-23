@@ -8,11 +8,19 @@ myApp.controller('UsersController', function($scope, UsersFactory){
 
 
 	$scope.addUser = function(){
-		// this method takes two parameters: first one is new user data, second is a callback to be executed after the DB
-		// runs the query.  
+		// this method takes two parameters: first one is new user data, 
+		//second is a callback to be executed after the DB runs the query.  
 		UsersFactory.addUser($scope.new_user, function(err){
 			$scope.errors = err;
 		});
+	}
+
+	$scope.deleteUser = function(user){
+		//two paramenters: first one is the user id to be deleted, 
+		//second a callback to be executes after the DB runs the query
+		UsersFactory.deleteUser(user, function(err){
+			$scope.errors = err;
+		 })
 	}
 
 	$scope.getQuandlCurrencyData = function(){
@@ -27,9 +35,26 @@ myApp.controller('UsersController', function($scope, UsersFactory){
 
 	$scope.calculateStats = function(){
 		//this method calls the factory method which will call stats in the backend
-		UsersFactory.calculateStats(function(data){
-			$scope.exposure = data;
+		var amount = {amount : $scope.amount}
+		UsersFactory.calculateStats(amount, function(data){
 			$scope.formatted_stats = data;
+
+			$scope.chartConfig = {
+        		options: {
+            		chart: {
+                		type: 'bar'
+            		}
+        		},
+        		series: [{
+        			yAxis: 0, 
+            		data: [$scope.formatted_stats.pc20, $scope.formatted_stats.pc30, $scope.formatted_stats.pc40, $scope.formatted_stats.pc50, $scope.formatted_stats.pc60] //UsersFactory.calculateStats(function(data){ })
+        			}],
+        		title: {
+            		text: 'Gains/losses due to currency fluctuations'
+        		},
+        		loading: false
+    		}
+
 		})
 	}
 
@@ -68,21 +93,9 @@ myApp.controller('UsersController', function($scope, UsersFactory){
         this.chartConfig.loading = !this.chartConfig.loading
     }
 
-    $scope.chartConfig = {
-        options: {
-            chart: {
-                type: 'bar'
-            }
-        },
-        series: [{
-            data: [10, 15, 12, 8, 7]
-        }],
-        title: {
-            text: 'Hello'
-        },
+    
 
-        loading: false
-    }
+   
 
 });
 

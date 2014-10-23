@@ -5,10 +5,17 @@ myApp.factory('UsersFactory', function($http){
 	var factory = {};
 
 	var formatted_data = [];
+
+	factory.getUsers = function(callback){
+		$http.get('/users/index.json').
+	    success(function(data, status, headers, config) {
+	      callback(data);
+	      users = data;
+	      console.log(data);
+	    });
+	 }
 	
 	factory.addUser = function(user, update_errors){
-
-		//angular is a http module, something inside node
 		
 		$http.post('/users/create', user).success(function(data, status, headers, config) {
 		  console.log('data is', data);
@@ -28,14 +35,15 @@ myApp.factory('UsersFactory', function($http){
 		});
 	}
 
-	factory.getUsers = function(callback){
-		$http.get('/users/index.json').
-	    success(function(data, status, headers, config) {
-	      callback(data);
-	      users = data;
-	      console.log(data);
-	    });
-	 }
+	factory.deleteUser = function(user,update_errors){
+		$http.delete('/users/'+ user._id + '/delete').success(function(data,status,headers,config) {
+			update_errors(data);
+			users.splice(users.indexOf(user),1)
+			console.log(users);
+			console.log(data.message)
+		})
+	}
+	
 
 	factory.getQuandlCurrencyData = function (currency){
 
@@ -44,13 +52,7 @@ myApp.factory('UsersFactory', function($http){
 		var auth_token = 'auth_token=hp7KBR5vrnKzh5zw9qG1';
 		var quandl_url = 'http://www.quandl.com/api/v1/datasets/QUANDL/' + symbol +'.json?trim_start=1994-05-27&trim_end=2014-10-13&' + auth_token;
 
-		console.log(quandl_url);
-
 		$.getJSON(quandl_url, function (data) {
-			console.log(data)
-
-			console.log("In the factory and this is my data [5]: " + data.data[5] + " and data [6]" + data.data[6])
-
 		var formatted_data = [];
 
 		for ( var i=0; i<data.data.length; i++){
@@ -61,8 +63,7 @@ myApp.factory('UsersFactory', function($http){
 		console.log(formatted_data.length);
 
 		formatted_data = formatted_data.reverse();
-
-		
+	
 		$('#container_chart1').highcharts('StockChart', {
 					rangeSelector : {
 						selected : 1
@@ -81,29 +82,19 @@ myApp.factory('UsersFactory', function($http){
 					}]
 
 				});
-
 		});
-
 
 	 }
 
-	 factory.calculateStats = function (callback){
-		$http.get('/stats').success(function(data, status, headers, config) {
+	 factory.calculateStats = function (amount, callback){
+		$http.post('/stats', amount).success(function(data, status, headers, config) {
 	      callback(data);
 	      exposure = 100;
 	      formatted_stats = data;
 	      console.log(data);
+	      return data;
 	    });
 	 }
-	 		//$('#stats').append('this is a jquery append test')
-	 	
-	 	//with the data calculated from diff Quandl data we can get the proportional expected losses
-	 	
-	 		//$('#stats').append("<h3>Once in 5 years you will loose {{json_stats.pc20 * exposure}}</h3>")
-
-
-	 
-
 
 	return factory;
 })

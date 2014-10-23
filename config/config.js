@@ -14,39 +14,15 @@ var path = require('path')
 
 module.exports = {
   development: {
-    //db: 'mongodb://localhost/test',
-    db: 'mongodb://heroku_app30863453:654h6i1jniaftg2hb00aaaicet@ds047030.mongolab.com:47030/heroku_app30863453',
+    db: 'mongodb://localhost/fx_project_dev',
+    //db: 'mongodb://heroku_app30863453:654h6i1jniaftg2hb00aaaicet@ds047030.mongolab.com:47030/heroku_app30863453',
     root: rootPath,
     notifier: notifier,
     app: {
       name: 'Nodejs Express Mongoose Demo'
-    },
-    facebook: {
-      clientID: "APP_ID",
-      clientSecret: "APP_SECRET",
-      callbackURL: "http://localhost:3000/auth/facebook/callback"
-    },
-    twitter: {
-      clientID: "CONSUMER_KEY",
-      clientSecret: "CONSUMER_SECRET",
-      callbackURL: "http://localhost:3000/auth/twitter/callback"
-    },
-    github: {
-      clientID: 'APP_ID',
-      clientSecret: 'APP_SECRET',
-      callbackURL: 'http://localhost:3000/auth/github/callback'
-    },
-    google: {
-      clientID: "APP_ID",
-      clientSecret: "APP_SECRET",
-      callbackURL: "http://localhost:3000/auth/google/callback"
-    },
-    linkedin: {
-      clientID: "CONSUMER_KEY",
-      clientSecret: "CONSUMER_SECRET",
-      callbackURL: "http://localhost:3000/auth/linkedin/callback"
     }
   },
+
   test: {
     db: 'mongodb://heroku_app30863453:654h6i1jniaftg2hb00aaaicet@ds047030.mongolab.com:47030/heroku_app30863453',
     //db: 'mongodb://localhost/noobjs_test',
@@ -54,32 +30,15 @@ module.exports = {
     notifier: notifier,
     app: {
       name: 'Nodejs Express Mongoose Demo'
-    },
-    facebook: {
-      clientID: "APP_ID",
-      clientSecret: "APP_SECRET",
-      callbackURL: "http://localhost:3000/auth/facebook/callback"
-    },
-    twitter: {
-      clientID: "CONSUMER_KEY",
-      clientSecret: "CONSUMER_SECRET",
-      callbackURL: "http://localhost:3000/auth/twitter/callback"
-    },
-    github: {
-      clientID: 'APP_ID',
-      clientSecret: 'APP_SECRET',
-      callbackURL: 'http://localhost:3000/auth/github/callback'
-    },
-    google: {
-      clientID: "APP_ID",
-      clientSecret: "APP_SECRET",
-      callbackURL: "http://localhost:3000/auth/google/callback"
-    },
-    linkedin: {
-      clientID: "CONSUMER_KEY",
-      clientSecret: "CONSUMER_SECRET",
-      callbackURL: "http://localhost:3000/auth/linkedin/callback"
-    }
+    }  
   },
-  production: {}
+   
+  production: {
+    db: 'mongodb://heroku_app30863453:654h6i1jniaftg2hb00aaaicet@ds047030.mongolab.com:47030/heroku_app30863453',
+    root: rootPath,
+    notifier: notifier,
+    app: {
+      name: 'Nodejs Express Mongoose Demo'
+    },   
+  }
 }

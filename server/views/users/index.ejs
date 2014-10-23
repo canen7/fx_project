@@ -1,315 +1,203 @@
 <html  ng-app="myApp">
-	<head>
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
-		<!--<script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>-->
-		
-		<link rel="stylesheet" type='text/css' href='http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css'>
-		<script type="text/javascript" src='http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js'></script>
-		<script type="text/javascript" src='https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.8/angular.js'></script>
-		<script type="text/javascript" src='/javascripts/angular/app.js'></script>
-		<script type="text/javascript" src='/javascripts/angular/controllers/users.js'></script>
-		<script type="text/javascript" src='/javascripts/angular/models/users_factory.js'></script>	
-		<script type="text/javascript" src='http://code.highcharts.com/stock/highstock.js'></script>
-		<script type="text/javascript" src='http://code.highcharts.com/stock/modules/exporting.js'></script>
-		<script type="text/javascript" src='/javascripts/angular/libraries/highcharts-ng.js'></script>		
+<head>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
+	<!--<script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>-->
+	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">	
+	<link rel="stylesheet" type='text/css' href='http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css'>
+	<script type="text/javascript" src='http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js'></script>
+	<script type="text/javascript" src='https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.8/angular.js'></script>
+	<script type="text/javascript" src='/javascripts/angular/app.js'></script>
+	<script type="text/javascript" src='/javascripts/angular/controllers/users.js'></script>
+	<script type="text/javascript" src='/javascripts/angular/models/users_factory.js'></script>	
+	<script type="text/javascript" src='http://code.highcharts.com/stock/highstock.js'></script>
+	<script type="text/javascript" src='http://code.highcharts.com/stock/modules/exporting.js'></script>
+	<script type="text/javascript" src='/javascripts/angular/libraries/highcharts-ng.js'></script>		
 
-		<!-- <script type="text/javascript" src="http://code.highcharts.com/highcharts.js"></script>-->
-		<!--<script src="http://code.highcharts.com/maps/highmaps.js"></script>
-		<script src="http://code.highcharts.com/maps/modules/data.js"></script>
-		<script src="http://code.highcharts.com/maps/modules/exporting.js"></script>-->
+	<!-- <script type="text/javascript" src="http://code.highcharts.com/highcharts.js"></script>-->
+	<!--<script src="http://code.highcharts.com/maps/highmaps.js"></script>
+	<script src="http://code.highcharts.com/maps/modules/data.js"></script>
+	<script src="http://code.highcharts.com/maps/modules/exporting.js"></script>-->
 
-	</head>
+</head>
 
-	<body ng-controller="UsersController">
-	<div class="container">
-    	<nav class="navbar navbar-inverse" role="navigation"> 
+<body ng-controller="UsersController">
+
+<div class="container">
+	
+	<nav class="navbar navbar-inverse" role="navigation"> 
       	<div class="container-fluid">
 	      	<!-- Brand and toggle get grouped for better mobile display -->
 	        <div class="navbar-header">
-	          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-	            <span class="sr-only">Toggle navigation</span>
-	            <span class="icon-bar"></span>
-	            <span class="icon-bar"></span>
-	            <span class="icon-bar"></span>
-	          </button>
-	        <a class="navbar-brand" href="#">FX hedging</a>
+	          	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+	            	<span class="sr-only">Toggle navigation</span>
+	            	<span class="icon-bar"></span>
+	            	<span class="icon-bar"></span>
+	            	<span class="icon-bar"></span>
+	          	</button>
+	          	<a class="navbar-brand" href="#">FX hedging</a>
 	        </div>
 	        <!-- Collect the nav links, forms, and other content for toggling -->
 	        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	          <ul class="nav navbar-nav">
-	            <li class="active"><a href="#">About</a></li>
-	            <li><a href="#"><span class="glyphicon glyphicon-wrench"></span><span class ="glyphicon-class>glyphicon">  Methodology</span></a></li>
+	            <li class="active">
+	            	<a href="/methodology">Methodology</a>
+	            </li>
 	          </ul>
-
-	          <form class="navbar-form navbar-right" role="search">
-	            <div class="form-group">
-	              <input type="text" class="form-control" placeholder="type">
-	            </div>
-	            <button type="submit" class="btn btn-primary">Search</button>
-	          </form>
-
 	        </div><!-- /.navbar-collapse -->
-	  
       	</div><!-- /.container-fluid -->
+	</nav><!-- end of navbar -->
 
-    	</nav><!-- end of navbar -->
-
-		<div class='container' >
-	
+	<div class='row'>
+		<div class='row'>
+			<div class='col-md-12'>
+				<div id='between_nav_and_first_row'>
+					<h2 class='blue'>Manage your FX risks</h2>
+					<h3>Enter the foreign currency to which you are exposed and see how it behaves. Then enter the dollar amount exposed to that currency and understand the risks to which you are exposed. Finally, see useful products to manage the risks or add your own</h3>
+				</div>
+			</div>
+		</div>	<!-- end of row-->
 			
-
 		<hr>
 
-		<div>
-
-		
-
-
-			<h1>Manage your FX risks!</h1>
-			
-			
-				<hr>	
-				<form class="navbar-form">
-					<h3>Enter your currency</h3>
-					<p>
-					<input type="text" name="inputCurrency" placeholder="enter currency" ng-model="currency" />
-					<input type="submit" value="submit" ng-click="getQuandlCurrencyData(currency)" />
-					</p>
-				</form>
+		<div class='col-md-3'>
+			<form class="form">
+				<h3>Enter your currency</h3>
+				<div class='form-group'>
+					<input type="text" class= 'form-control' name="inputCurrency" placeholder=" currency pair e.g. EURUSD" ng-model="currency" />
+				</div>
+				<button type="submit" class='btn btn-primary' ng-click="getQuandlCurrencyData()">See chart</button>
 				</br>
-				<div id="container_chart1" style="height: 400px; min-width: 310px">A chart goes in here <%=title%></div>
-				</div>	
-
-				<script type="text/javascript">
-
-
-				</script>
-
-				<input type="text" name="inputExposure" placeholder="eg.: 720000" ng-model="exposure" />
-				<input type="submit" value="Calculate risk" ng-click="calculateStats()"/>
-
-				<div id='stats' style="min-width: 310px; height: 400px; margin: 0 auto">
-					</br>
-					<h3>These are the returns statistics:</h3>
-					<p>Start: {{formatted_stats.begin_data}}</p>
-					<p>End: {{formatted_stats.end_data}}</p>
-					<p>Min: {{formatted_stats.min}}</p>
-					<p>Max: {{formatted_stats.max}}</p>
-					<p>Mean: {{formatted_stats.max}}</p>
-					<p>Min: {{formatted_stats.max}}</p>
-					{{formatted_stats}}
-				</div>
-
-				<hr>
-
-				<h3>And graphically...</h3>
-
-				<div class="span12">
-            		<input ng-model="chartConfig.title.text">
-            		<button ng-click="addSeries()">Add Series</button>
-            		<button ng-click="addPoints()">Add Points to Random Series</button>
-            		<button ng-click="removeRandomSeries()">Remove Random Series</button>
-            		<button ng-click="swapChartType()">Line/Bar</button>
-            		<button ng-click="toggleLoading()">Loading?</button>
-       			 </div>
-
-        <div class="row">
-            <highchart id="chart1" config="chartConfig" class="span10"></highchart>
-        </div>
-			// <script type="text/javascript">
-			// 	$(function () {
-			// 		$('#container2').highcharts({
-			// 	        title: {
-			// 	            text: 'Distribution of returns',
-			// 	            x: -20 //center
-			// 	        },
-			// 	        subtitle: {
-			// 	            text: 'Source: myself',
-			// 	            x: -20
-			// 	        },
-			// 	        xAxis: {
-			// 	            categories: ['5', '15', '20', '25', '30', '35',
-			// 	                '40', '45', '50', '55', '60', '65','70','75','80', '85','90','95','100']
-			// 	        },
-			// 	        yAxis: {
-			// 	            title: {
-			// 	                text: 'Exchange rate'
-			// 	            },
-			// 	         		plotLines: [{
-			// 	                value: 0,
-			// 	                width: 1,
-			// 	                color: '#808080'
-			// 	            }]
-			// 	        },
-			// 	        tooltip: {
-			// 	            valueSuffix: '°C'
-			// 	        },
-			// 	        legend: {
-			// 	            layout: 'vertical',
-			// 	            align: 'right',
-			// 	            verticalAlign: 'middle',
-			// 	            borderWidth: 0
-			// 	        },
-			// 	        series: [{
-			// 	            name: 'Whole period stats',
-			// 	            data: [formatted_stats.pc5, formatted_stats.pc10,formatted_stats.pc15, formatted_stats.pc20,formatted_stats.pc25,formatted_stats.pc30, formatted_stats.pc35,formatted_stats.pc40, formatted_stats.pc45,formatted_stats.pc50,formatted_stats.pc55,formatted_stats.pc60,formatted_stats.pc65,formatted_stats.pc70,formatted_stats.pc75,formatted_stats.pc80,formatted_stats.pc85,formatted_stats.pc90,formatted_stats.pc95]
-			// 	        }, {
-			// 	            name: 'Whole period with some stats x 1.25',
-			// 	            data: [formatted_stats.pc5*1.25, formatted_stats.pc10*1.25,formatted_stats.pc15*1.25, formatted_stats.pc20*1.25,formatted_stats.pc25*1.25,formatted_stats.pc30*1.25,formatted_stats.pc35*1.25,formatted_stats.pc40,formatted_stats.pc45, formatted_stats.pc50,formatted_stats.pc55,formatted_stats.pc60,formatted_stats.pc65,formatted_stats.pc70,formatted_stats.pc75,formatted_stats.pc80*1.25,formatted_stats.pc85*1.25,formatted_stats.pc90,formatted_stats.pc95]
-			// 	        }] 
-			// 	    });
-			// 	});
-			// </script>
-
-				<div id="container2" style="min-width: 310px; height: 400px; margin: 0 auto">Temp chart</div>
-
-
-				<hr>
-
-				<div>
-				<h3>List of all the users</h3>
-				<input type="text" placeholder="search" ng-model="filter_name">
-				<ul>
-					<li ng-repeat="user in users | filter:filter_name">{{user.name}} - {{user.email}}</li>
-				</ul>
-
-				<hr>
-
-				<h3>Add a new user</h3>
-				<ul class='error_messages'>
-					<li ng-repeat='error in errors'>{{error.message}}</li>
-				</ul>
-				<form>
-					<input type="text" name="name" placeholder="name" ng-model="new_user.name" />
-					<input type="text" name="email" placeholder="email" ng-model="new_user.email" />
-					<input type="submit" value="Create new" ng-click="addUser()" />
-
-				<div>
-
-			       <!--  <script type="text/javascript">
-			    //     	$(function () {
-
-							//     // Prepare random data
-							//     var data = [
-							//         {
-							//             "code": "DE.SH",
-							//             "value": 728
-							//         },
-							//         {
-							//             "code": "DE.BE",
-							//             "value": 710
-							//         },
-							//         {
-							//             "code": "DE.MV",
-							//             "value": 963
-							//         },
-							//         {
-							//             "code": "DE.HB",
-							//             "value": 541
-							//         },
-							//         {
-							//             "code": "DE.HH",
-							//             "value": 622
-							//         },
-							//         {
-							//             "code": "DE.RP",
-							//             "value": 866
-							//         },
-							//         {
-							//             "code": "DE.SL",
-							//             "value": 398
-							//         },
-							//         {
-							//             "code": "DE.BY",
-							//             "value": 785
-							//         },
-							//         {
-							//             "code": "DE.SN",
-							//             "value": 223
-							//         },
-							//         {
-							//             "code": "DE.ST",
-							//             "value": 605
-							//         },
-							//         {
-							//             "code": "DE.",
-							//             "value": 361
-							//         },
-							//         {
-							//             "code": "DE.NW",
-							//             "value": 237
-							//         },
-							//         {
-							//             "code": "DE.BW",
-							//             "value": 157
-							//         },
-							//         {
-							//             "code": "DE.HE",
-							//             "value": 134
-							//         },
-							//         {
-							//             "code": "DE.NI",
-							//             "value": 136
-							//         },
-							//         {
-							//             "code": "DE.TH",
-							//             "value": 704
-							//         }
-							//     ];
-							//     console.log(data);
-
-							//     $.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=germany.geo.json&callback=?', function (geojson) {
-
-							//         // Initiate the chart
-							//         $('#container3').highcharts('Map', {
-
-							//             title : {
-							//                 text : 'GeoJSON in Highmaps'
-							//             },
-
-							//             mapNavigation: {
-							//                 enabled: true,
-							//                 buttonOptions: {
-							//                     verticalAlign: 'bottom'
-							//                 }
-							//             },
-
-							//             colorAxis: {
-							//             },
-
-							//             series : [{
-							//                 data : data,
-							//                 mapData: geojson,
-							//                 joinBy: ['code_hasc', 'code'],
-							//                 name: 'Random data',
-							//                 states: {
-							//                     hover: {
-							//                         color: '#BADA55'
-							//                     }
-							//                 },
-							//                 dataLabels: {
-							//                     enabled: true,
-							//                     format: '{point.properties.postal}'
-							//                 }
-							//             }]
-							//         });
-							//     });
-							// });
-										        	
-										        	
-
-			    //     </script> -->
-			        
-			        <div id="container3" style="min-width: 310px; max-width: 400px">
-			        	Some map in here, please!
-			        </div>
-
-			    </div>
-			</div>
-				</div>
-				</form>
-			</div>
+				</br>
+				<p>The chart shows the evolution of the selected rate, change the date range and hover around the chart to see the rate for one day. You can also print or download the chart</p>
+				</br>
+			</form>
 		</div>
-	</div>
-	</body>
+			
+		<div class='col-md-9' id="container_chart1" style="height: 400px; min-width: 310px">
+				<p><em><%=title%> Enter a currency pair (e.g. USDEUR) on the left to see its chart</em> </p>
+		</div>
+
+	</div> <!-- end of first row -->
+
+	<hr>
+
+	<div class='row'>
+		<div class='col-md-3'>
+			<form class='form'>
+				<h3>Enter a $ amount</h3>
+				<div class='form-group'>
+					<input class ]='form-control' type="text" class='form-control' name="amount" placeholder="eg.: 720000" ng-model="amount" />
+				</div>
+				<input type="submit" class='btn btn-primary' value="Calculate risk" ng-click="calculateStats()"/>
+				</br>
+				</br>
+				<p>The figures on the left show the impact of currency fluctuations on the expected cash flow based on the historical behavior of the currency pair defined in the previous step. E.g. once in 5 years you can expect to get the gain/loss showed in Pc 80 </p>
+				<br>
+			</form>
+		</div>
+
+		<div class='col-md-9' id='stats' style="min-width: 310px; height: 400px; margin: 0 auto">
+			<h3>Statistics (1 year horizon) regarding potential gains/losses:</h3>
+			</br>
+			<h4>Period Start: <em>{{formatted_stats.begin_data}}</em></h4>
+			<h4>End: <em>{{formatted_stats.end_data}}</em></h4>
+			<h4>Min: <em>{{formatted_stats.min.toFixed(2)}}</em></h4>
+			<h4>Max: <em>{{formatted_stats.max.toFixed(2)}}</em></h4>
+			<h4>Mean: <em>{{formatted_stats.mean.toFixed(2)}}</em></h4>
+			<h4>Min: <em>{{formatted_stats.min.toFixed(2)}}</em></h4>
+			<h4>Pc 20: <em>{{formatted_stats.pc20.toFixed(2)}}</em></h4>
+			<h4>Pc 80: <em>{{formatted_stats.pc80.toFixed(2)}}</em></h4>
+			
+		</div>
+	</div> <!-- end of second row -->	
+
+	<hr>
+
+	<div class='row'>
+		<div class='col-md-3'>
+			<h3>And graphically...</h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        	<!-- <div class='form-group'>
+        		<input class='form-control' ng-model="chartConfig.title.text">
+        	</div> -->
+        	<!-- <button class='btn btn-primary' ng-click="addSeries()">Add Series</button></br></br> -->
+        	<!-- <button class='btn btn-primary' ng-click="addPoints()">Add Points to Random Series</button></br></br>
+        	<button class='btn btn-primary' ng-click="removeRandomSeries()">Remove Random Series</button></br></br> -->
+        	<button class='btn btn-primary' ng-click="swapChartType()">Line/Bar</button></br></br>
+        	<!-- <button class='btn btn-primary' ng-click="toggleLoading()">Loading?</button></br></br> -->
+   		</div>
+
+			<div class='col-md-9'>
+    		<highchart id="chart1" config="chartConfig" class="span10"></highchart>
+		</div>
+    </div>  <!-- end of third row -->
+
+    <hr>
+
+	<div class='row'>
+		<div class='col-md-3'>
+			<h3>Product alternatives to manage your risk</h3>
+			<form class='form'>
+				<input class='form-control' type="text" placeholder="search" ng-model="filter_name">
+			</form>
+			<ul>
+				<li ng-repeat="user in users | filter:filter_name">{{user.name}} | {{user.email}} | <a href="" ng-click="deleteUser(user)">Delete</a> </li>
+			</ul>
+		</div>
+
+		<div class='col-md-9'>
+			</br>
+    		<h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h5>
+    		</br>
+    		<h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h5>
+		</div>
+	</div> <!-- end of fourth row-->
+
+	<hr>
+
+	<div class='row'>
+		<div class='col-md-3'>
+			<h3>Add your own strategy!</h3>
+			<!-- <ul class='error_messages'>
+				<li ng-repeat='error in errors'>{{error.message}}</li>
+			</ul> -->
+			<form class='form'>
+				<div class='form-group'>
+					<input class='form-control' type="text" name="name" placeholder="strategy" ng-model="new_user.name" />
+				</div>
+				<div class='form-group'>
+					<input class='form-control' type="text" name="email" placeholder="description" ng-model="new_user.email"/>
+				</div>
+				<input type="submit" class='btn btn-primary' value="Create new" ng-click="addUser()" />
+			</form>
+		</div>
+
+		<div class='col-md-9'>
+			</br>
+			<h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h5>
+		</div>
+	</div><!-- end of fifth row-->
+
+</div> <!-- end of container --> 
+</body>
 </html>

@@ -8,7 +8,7 @@ var http = require ('http');
 module.exports = {
 
 	index: function(req, res){
-		res.render('./../server/views/users/index', {title:'Welcome Page'});
+		res.render('./../server/views/users/index', {title:'Welcome!'});
 	},
 
 	index_json: function(req, res){	
@@ -31,6 +31,19 @@ module.exports = {
 		});
 	},
 
+	destroy: function(req,res){
+		var message = {};
+		User.remove({_id: req.params.id},function(err){
+			if(!err) {
+				message.type = "notif";
+			}
+			else {
+				message.type = 'error'
+			}
+			res.send(message);
+		});
+	},
+
 	show: function(req, res){
 		console.log(req.params.id);
 		res.render('./../server/views/users/show', {title:'Welcome Page'});
@@ -45,6 +58,15 @@ module.exports = {
 		var auth_token = 'auth_token=hp7KBR5vrnKzh5zw9qG1';
 		var quandl_url = '/api/v1/datasets/QUANDL/EURUSD.json?trim_start=1994-05-27&trim_end=2014-10-13&transformation=rdiff&' + auth_token;
 
+		var amount = request.body;
+
+		console.log(amount);
+
+		amount = Number(amount.amount);
+
+		console.log(typeof(amount));
+
+		console.log(JSON.parse(JSON.stringify(amount)));
 
 		var options = {
 			hostname:'www.quandl.com',
@@ -56,12 +78,6 @@ module.exports = {
 			var body = "";
 			res.on('data', function (chunk) {
 				body += chunk;
-				//console.log('BODY: ' + chunk);
-				
-				// for ( var i=0; i<body.length; i++){
-				// console.log(body[i]);
-				// };
-
 			});
 			
 			res.on('end', function(res){
@@ -73,39 +89,34 @@ module.exports = {
 					close_prices[i]=parsed_json.data[i][1];
 				}  
 
-				//console.log("This is the parsed_json.data ",parsed_json.data);
-
-				//console.log("These are the close prices ",close_prices);
-
 				json_stats = {};
 
 				json_stats.begin_data = parsed_json.data[parsed_json.data.length -1][0];
 				json_stats.end_data = parsed_json.data[0][0];
-				json_stats.min = ss.min(close_prices);
-				json_stats.max = ss.max(close_prices);
-				json_stats.mean = ss.mean(close_prices);
-				json_stats.pc10 = ss.quantile(close_prices,0.1);
-				json_stats.pc15 = ss.quantile(close_prices,0.15);
-				json_stats.pc20 = ss.quantile(close_prices,0.2);
-				json_stats.pc25 = ss.quantile(close_prices,0.25);
-				json_stats.pc30 = ss.quantile(close_prices,0.3);
-				json_stats.pc35 = ss.quantile(close_prices,0.35);
-				json_stats.pc40 = ss.quantile(close_prices,0.4);
-				json_stats.pc45 = ss.quantile(close_prices,0.45);
-				json_stats.pc50 = ss.quantile(close_prices,0.5);
-				json_stats.pc55 = ss.quantile(close_prices,0.55);
-				json_stats.pc60 = ss.quantile(close_prices,0.6);
-				json_stats.pc65 = ss.quantile(close_prices,0.65);
-				json_stats.pc70 = ss.quantile(close_prices,0.7);
-				json_stats.pc75 = ss.quantile(close_prices,0.75);
-				json_stats.pc80 = ss.quantile(close_prices,0.8);
-				json_stats.pc85 = ss.quantile(close_prices,0.85);
-				json_stats.pc90 = ss.quantile(close_prices,0.9);
-				json_stats.pc95 = ss.quantile(close_prices,0.95);
-
+				json_stats.min = ss.min(close_prices)*amount;
+				json_stats.max = ss.max(close_prices)*amount;
+				json_stats.mean = ss.mean(close_prices)*amount;
+				json_stats.pc10 = ss.quantile(close_prices,0.1)*amount;
+				json_stats.pc15 = ss.quantile(close_prices,0.15)*amount;
+				json_stats.pc20 = ss.quantile(close_prices,0.2)*amount;
+				json_stats.pc25 = ss.quantile(close_prices,0.25)*amount;
+				json_stats.pc30 = ss.quantile(close_prices,0.3)*amount;
+				json_stats.pc35 = ss.quantile(close_prices,0.35)*amount;
+				json_stats.pc40 = ss.quantile(close_prices,0.4)*amount;
+				json_stats.pc45 = ss.quantile(close_prices,0.45)*amount;
+				json_stats.pc50 = ss.quantile(close_prices,0.5)*amount;
+				json_stats.pc55 = ss.quantile(close_prices,0.55)*amount;
+				json_stats.pc60 = ss.quantile(close_prices,0.6)*amount;
+				json_stats.pc65 = ss.quantile(close_prices,0.65)*amount;
+				json_stats.pc70 = ss.quantile(close_prices,0.7)*amount;
+				json_stats.pc75 = ss.quantile(close_prices,0.75)*amount;
+				json_stats.pc80 = ss.quantile(close_prices,0.8)*amount;
+				json_stats.pc85 = ss.quantile(close_prices,0.85)*amount;
+				json_stats.pc90 = ss.quantile(close_prices,0.9)*amount;
+				json_stats.pc95 = ss.quantile(close_prices,0.95)*amount;
 
 				response.send(json_stats);
-				//res.render('./../server/views/users/index', {stats: json_stats})
+				//response.send(JSON.stringify(json_stats);
 			});
 
 		});
@@ -116,12 +127,10 @@ module.exports = {
 
 		req.end();
 
+	},  // end get_stats
 
-
-		// console.log('Within the calculate_mean function');
-		// res.render('./../server/views/users/index', {title:'Welcome Page'});
-	}  // end get_stats
-
-
+	show_methodology: function (req, res) {
+		res.render('./../server/views/users/methodology', {title:'Welcome!'});
+	}
 
 }

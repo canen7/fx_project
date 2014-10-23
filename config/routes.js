@@ -7,11 +7,10 @@ module.exports = function Routes(app){
 	app.get('/users/new', function(req,res) { users.new(req,res) });
 	app.post('/users/create', function(req,res) { users.create(req,res) });
 	app.get('/users/:id', function(req,res) { users.show(req,res) });
+	app.delete('/users/:id/delete', function(req,res) {users.destroy(req,res)})
 	app.get('/users/:id/edit', function(req,res) { users.edit(req,res) });
 	app.post('/users/newUser_json', function(req,res) { users.newUser_json(req,res) });
-	app.get('/stats', function(req,res){ users.get_stats(req,res) });
-
-
-	app
+	app.post('/stats', function(req,res){ users.get_stats(req,res) });
+	app.get('/methodology', function(req,res) { users.show_methodology(req,res) });
 	
 };
