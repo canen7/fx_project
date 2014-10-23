@@ -55,17 +55,18 @@ module.exports = {
 
 	get_stats: function (request, response){
 
+		var amount = request.body.amount;
+		var currency = request.body.currency;
+
 		var auth_token = 'auth_token=hp7KBR5vrnKzh5zw9qG1';
-		var quandl_url = '/api/v1/datasets/QUANDL/EURUSD.json?trim_start=1994-05-27&trim_end=2014-10-13&' + auth_token;
+		var quandl_url = '/api/v1/datasets/QUANDL/'+currency+'.json?trim_start=1994-05-27&trim_end=2014-10-13&' + auth_token;
 
-		var amount = request.body;
+		console.log("The amount is: ",amount);
+		console.log("the currency is: ",currency);
 
-		console.log(amount);
-
-		amount = Number(amount.amount);
-
-		console.log(typeof(amount));
-
+		amount = Number(amount);
+		
+		console.log("the type of amount is: ",typeof(amount));
 		console.log(JSON.parse(JSON.stringify(amount)));
 
 		var options = {

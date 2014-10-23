@@ -146,7 +146,7 @@
 				<input class='form-control' type="text" placeholder="search" ng-model="filter_name">
 			</form>
 			<ul>
-				<li ng-repeat="user in users | filter:filter_name">{{user.name}} | {{user.email}} | <a href="" ng-click="deleteUser(user)">Delete</a> </li>
+				<li ng-repeat="user in users | filter:filter_name"><b>{{user.name}}</b>: {{user.email}} | <a href="" ng-click="deleteUser(user)">Delete</a> </li>
 			</ul>
 		</div>
 

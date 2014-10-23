@@ -35,8 +35,11 @@ myApp.controller('UsersController', function($scope, UsersFactory){
 
 	$scope.calculateStats = function(){
 		//this method calls the factory method which will call stats in the backend
-		var amount = {amount : $scope.amount}
-		UsersFactory.calculateStats(amount, function(data){
+		// var amount = {amount : $scope.amount};
+		// var currency = {currency: $scope.currency};
+		var amount_currency = {amount: $scope.amount, currency: $scope.currency};
+		console.log("This the amount_currency variable: ",amount_currency);
+		UsersFactory.calculateStats(amount_currency, function(data){
 			$scope.formatted_stats = data;
 
 			$scope.chartConfig = {

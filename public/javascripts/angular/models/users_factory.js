@@ -86,12 +86,10 @@ myApp.factory('UsersFactory', function($http){
 
 	 }
 
-	 factory.calculateStats = function (amount, callback){
-		$http.post('/stats', amount).success(function(data, status, headers, config) {
+	 factory.calculateStats = function (amount_currency, callback){
+		$http.post('/stats', amount_currency).success(function(data, status, headers, config) {
 	      callback(data);
-	      exposure = 100;
 	      formatted_stats = data;
-	      console.log(data);
 	      return data;
 	    });
 	 }
